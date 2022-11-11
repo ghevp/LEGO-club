@@ -9,7 +9,7 @@
         </div>
     </div>
         <div class="policy">
-          <h1>レゴ®で人をワクワクさせる</h1>
+          <h1>レゴ®で人を喜ばす</h1>
         </div>
         <div class="introduce">
                 <h2>

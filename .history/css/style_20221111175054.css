@@ -25,24 +25,14 @@
   }
   @media (min-width: 1500px) {
   .policy h1 {
-      font-size: 120px;
+      font-size: 120;
     }
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     .policy h1 {
-        font-size: 80px;
+        font-size: 50px;
       }
     }
-    @media (max-width: 1024px) {
-      .policy h1 {
-          font-size: 60px;
-        }
-      }
-      @media (max-width: 800px) {
-        .policy h1 {
-            font-size: 50px;
-          }
-        }
  .achievement p{
   text-align: center;
  }

@@ -17,7 +17,7 @@
   }
   
   .policy h1{
-    font-family: 'Sawarabi Gothic', sans-serif;
+    font-family: 'Yuji Syuku', serif;
     font-size: 100px;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px black;
@@ -25,24 +25,14 @@
   }
   @media (min-width: 1500px) {
   .policy h1 {
-      font-size: 120px;
+      font-size: 150px;
     }
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 900px) {
     .policy h1 {
-        font-size: 80px;
+        font-size: 50px;
       }
     }
-    @media (max-width: 1024px) {
-      .policy h1 {
-          font-size: 60px;
-        }
-      }
-      @media (max-width: 800px) {
-        .policy h1 {
-            font-size: 50px;
-          }
-        }
  .achievement p{
   text-align: center;
  }
@@ -166,9 +156,6 @@
    align-items: center;
     
   }
-  .introduce p{
-    text-align: center;
-  }
   .intro1{
   
     text-align: center;
@@ -179,9 +166,6 @@
     display: flex;
     justify-content: space-between;
     
-  }
-  .chose{
-
   }
   .rinks ul{
     list-style: none;
@@ -290,10 +274,7 @@
     align-items: center;
     background-color: #eaeaea;
   }
-  .chose li{
-    list-style: none;
-    display: inline-block;
-  }
+  .
   .footer {
     display: flex;
     flex-direction: column;

@@ -9,7 +9,7 @@
         </div>
     </div>
         <div class="policy">
-          <h1>レゴ®で人をワクワクさせる</h1>
+          <h1>レゴ®で人を喜ばす</h1>
         </div>
         <div class="introduce">
                 <h2>
@@ -21,7 +21,7 @@
         <ul class="chose">
            <li><a href="?page=achievement">活動実績</a></li>
             <li><a href="?page=policy">ポリシー</a></li>
-            <li><a href="?page=event">イベント</a></li>
+            <li><a href="?page=events>イベント</a></li>
             <li><a href="?page=about_us">弊サークルについて</a></li>
 </ul>
       </main>
