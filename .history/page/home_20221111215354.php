@@ -17,7 +17,7 @@
                 </h2>
                 <p>私たちは静岡県浜松市を中心に活動しているレゴの学生団体です。<br>
                 メンバーは基本的に静岡大学の学生で構成されています。</p>
-
+                
         </div>
         <div class="chose">
         <ul >
@@ -26,9 +26,6 @@
             <li><a href="?page=event">イベント</a></li>
             
 </ul>
-    <h2><small>連絡先</small></h2>
-    <p><small>official@shizudailego.com まで直接メールをご送付ください。<br>
-  弊団体は学生団体につき、返信が遅くなること等がございます。ご容赦ください。</small></p>
         </div>
       </main>
     </body>

@@ -27,7 +27,7 @@
             
 </ul>
     <h2><small>連絡先</small></h2>
-    <p><small>official@shizudailego.com まで直接メールをご送付ください。<br>
+    <p><small>official@shizudailego.com まで直接メールをご送付ください<br>
   弊団体は学生団体につき、返信が遅くなること等がございます。ご容赦ください。</small></p>
         </div>
       </main>

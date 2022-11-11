@@ -26,9 +26,8 @@
             <li><a href="?page=event">イベント</a></li>
             
 </ul>
-    <h2><small>連絡先</small></h2>
-    <p><small>official@shizudailego.com まで直接メールをご送付ください。<br>
-  弊団体は学生団体につき、返信が遅くなること等がございます。ご容赦ください。</small></p>
+    <h2>連絡先</h2>
+    <p>official</p>
         </div>
       </main>
     </body>

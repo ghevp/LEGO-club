@@ -37,7 +37,7 @@
     @media (max-width: 1024px) {
       .policy h1 {
           font-size: 60px;
-          padding-bottom: 250px;
+          padding-bottom: ;
         }
       }
       @media (max-width: 800px) {
@@ -48,7 +48,7 @@
         }
        @media (max-width: 600px) {
           .policy h1 {
-              font-size: 40px;
+              font-size: 50px;
               padding-bottom: 450px;
               
             }
