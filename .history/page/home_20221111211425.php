@@ -25,7 +25,6 @@
             <li><a href="?page=event">イベント</a></li>
             
 </ul>
-        </div>
       </main>
     </body>
     

@@ -18,14 +18,12 @@
                 <p>私たちは静岡県浜松市を中心に活動しているレゴの学生団体です。<br>
                 メンバーは基本的に静岡大学の学生で構成されています。</p>
         </div>
-        <div class="chose">
-        <ul >
+        <ul class="chose">
            <li><a href="?page=achievement">活動実績</a></li>
             <li><a href="?page=policy">ポリシー</a></li>
             <li><a href="?page=event">イベント</a></li>
             
 </ul>
-        </div>
       </main>
     </body>
     

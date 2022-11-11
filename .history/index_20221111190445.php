@@ -81,7 +81,8 @@
         <a href="?page=home">浜松学生レゴサークル</a>
         </div>
         <div class="copyright">
-    <p><small>copyright <a href="https://ghevp.com">ぐゑ</a> all rights reserved.</small><br></p>
+    <p><small>copyright <a href="https://ghevp.com">ぐゑ</a> all rights reserved.</small><br>
+    </p>
         </div>
     </footer>
     </body>

@@ -323,7 +323,7 @@
     transform: rotate(45deg);
   }
   
-  .chose a:hover {
+  .button02 a:hover {
     text-decoration: none;
     background-color: #bbbbbb;
   }

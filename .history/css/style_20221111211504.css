@@ -302,30 +302,6 @@
   }
   .chose a{
     text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    padding: 1em 2em;
-    width: 100px;
-    color: #333;
-    font-size: 18px;
-    font-weight: 700;
-    background-color: #cccccc;
-    border-radius: 50vh;
-  }
-  .chose a::after {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-top: 3px solid #333333;
-    border-right: 3px solid #333333;
-    transform: rotate(45deg);
-  }
-  
-  .chose a:hover {
-    text-decoration: none;
-    background-color: #bbbbbb;
   }
   .footer {
     display: flex;
