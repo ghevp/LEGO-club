@@ -22,7 +22,7 @@
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px black;
     padding-bottom: 200px;
-    
+    ;
   }
   @media (min-width: 1500px) {
   .policy h1 {
@@ -42,25 +42,16 @@
       @media (max-width: 800px) {
         .policy h1 {
             font-size: 50px;
-            padding-bottom: 300px;
+
           }
         }
-       @media (max-width: 600px) {
+        @media (max-width: 600px) {
           .policy h1 {
               font-size: 50px;
-              padding-bottom: 400px;
               
             }
-           
+            
           }
-          @media (max-width: 400px) {
-            .policy h1 {
-                font-size: 30px;
-                padding-bottom: 500px;
-                
-              }
-             
-            }
  .achievement p{
   text-align: center;
  }
@@ -83,7 +74,11 @@
     align-items: center;
   
   }
+@media (max-width:700px) {
+  .header_inner{
 
+  }
+}
   .header img{
     width:60px;
   }
@@ -319,7 +314,6 @@
     font-weight: 700;
     background-color: #cccccc;
     border-radius: 50vh;
-    margin-top: 20px;
   }
   .chose a::after {
     content: '';

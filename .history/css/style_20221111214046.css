@@ -42,7 +42,7 @@
       @media (max-width: 800px) {
         .policy h1 {
             font-size: 50px;
-            padding-bottom: 300px;
+
           }
         }
        @media (max-width: 600px) {
@@ -53,14 +53,6 @@
             }
            
           }
-          @media (max-width: 400px) {
-            .policy h1 {
-                font-size: 30px;
-                padding-bottom: 500px;
-                
-              }
-             
-            }
  .achievement p{
   text-align: center;
  }
