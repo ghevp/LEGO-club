@@ -8,7 +8,7 @@
     right: 0;
     height: 80px;
     background-color: white;
-    z-index: 10;
+    z-index: 20;
     box-shadow: 0 2px 4px gray;
   }
   .policy{
@@ -52,21 +52,37 @@
               padding-bottom: 450px;
               
             }
+          }
+            @media (max-width: 500px) {
+              .policy h1 {
+                  font-size: 36px;
+                  padding-bottom: 550px;
+                  
+                }
            
           }
           @media (max-width: 400px) {
             .policy h1 {
                 font-size: 30px;
-                padding-bottom: 500px;
+                padding-bottom: 700px;
                 
               }
              
             }
+            @media (max-width: 300px) {
+              .policy h1 {
+                  font-size: 25px;
+                  padding-bottom: 750px;
+                  
+                }
+               
+              }
  .achievement p{
   text-align: center;
  }
  .achievement{
   text-align: center;
+  width: 90%;
  }
  .achievement h1{
   text-align: center;
@@ -98,6 +114,16 @@
   
   .main h2{
     text-align: center;
+  }
+  .main p{
+    text-align: center;
+  }
+  .works{
+    width: 90%;
+    max-width: 1000px;
+  }
+  .works img{
+    border-radius: 30px;
   }
 
   .header_logo img{
@@ -251,9 +277,9 @@
   }
   .slider {
     width: 100%;
-  　
-  　　overflow: hidden;
-  　　margin: 0 auto;
+  
+  overflow: hidden;
+  margin: 0 auto;
    flex:2;
     
   }
@@ -303,6 +329,9 @@
     align-items: center;
     background-color: #eaeaea;
   }
+  .chose{
+    z-index: 18;
+  }
   .chose li{
     list-style: none;
     display: inline-block;
@@ -321,6 +350,7 @@
     background-color: #cccccc;
     border-radius: 50vh;
     margin-top: 20px;
+    
   }
   .chose a::after {
     content: '';

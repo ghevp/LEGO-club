@@ -1,9 +1,17 @@
 <main class="main">
+    <?php
+    date_default_timezone_set('Asia/Tokyo');
+    $month = date("m");
+    $date = date("d");
+    $i_mo = intval($month);
+    $i_da = intval($date);
+    if ($i_mo <= 12 or $i_da <= 11) {
+        include("event_exist.php");
+    } else {
 
-    <h1>イベントについて</h1>
-    <p>開催予定のイベントについてお知らせいたします</p>
-    <h2>浜松静大祭</h2>
-    <p class="date">11月12日、13日  </p>
-    <p>浜松静大祭に出展します。<br>
-    場所は工学部五号館２階の<b>5―24教室です</b>
+        include("event_nonexist.php");
+    };
+
+    ?>
+
 </main>
