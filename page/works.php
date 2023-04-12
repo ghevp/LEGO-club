@@ -33,15 +33,15 @@
         <p>GBCとはThe Great Ball Contraptionの略で、ボール運搬装置を各々が製作し、それをつなげて遊ぶというものです。
             (<a href="http://legokarakuri.blog91.fc2.com/blog-entry-26.html">LEGO TECHNIC からくり部屋</a> より引用)</p>
 
-       <h2> GBC</h2>
+       <h2> GBC1</h2>
 
         <p>Riku Katsumata氏のGBC作品である“Hybrid double lifter”を部員が真似して組み立てたものですが、一部の機構は組み立てた部員のオリジナルのものとなっています。因みにこのGBCが他の人によって組み立てられたのは初めてだそうです。</p>
         <img src="img/works/katsumata_gbc.jpg">
-        <h2>部長のGBC</h2>
+        <h2>GBC2</h2>
 
         <p>お椀の形のパーツに入ったボールを、カタパルトの仕組みを用いて出口まで飛ばすGBCです。周期的で軽快な発射音が魅力です。</p>
         <img src="img/works/SR_gbc.jpg">
-        <h2>池上さんのGBC</h2>
+        <h2>GBC3</h2>
 
         <p>クランク機構によって生み出された往復円運動を利用して、ボールをバケツリレーのように送り出す仕組みのGBCです。独特な動きが見ていてとても面白いです。</p>
         <img src="img/works/ikegami_gbc.jpg">
