@@ -16,7 +16,8 @@ $title = array(
     'policy' => "ポリシー",
     'achievement' => "活動実績",
     'works' => "作品紹介",
-    'log_in'=>"ログイン"
+    'log_in'=>"ログイン",
+    'contact'=>"お問い合わせ"
 );
 
 $c = 0;
