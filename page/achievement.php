@@ -47,6 +47,19 @@
 
             <a href="https://kodomokan.entetsuassist-dms.com/event/detail/855?s=06">浜松こども館さんのページ</a>
             </p>
+        <div class="one_of_achievement">
+            <h2>
+            GBC(Great Ball Contraption)～動くブロックからくりボール運び巨大装置
+            </h2>
+            <p class="date">
+            2022年　12/10,11　
+            </p>
+            <p>
+                イオンモール浜松市野で行われたイベントに部員の1年生1人、2年生1人が参加しました。
+                このイベントのコンセプトは動く作品のみの展示会で、ギミックについて高度な技術を持ったビルダーが一挙に集合する歴史的な展示会となりました。
+
+            </p>
+        </div>
 
         </div>
     </div>
