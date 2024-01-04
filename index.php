@@ -16,10 +16,15 @@ $title = array(
     'policy' => "ポリシー",
     'achievement' => "活動実績",
     'works' => "作品紹介",
-    'log_in'=>"ログイン",
-    'contact'=>"お問い合わせ"
+    'log_in' => "ログイン",
+    'config'=>"設定",
+    'register'=>"新規アカウント作成"
 );
+require_once 'page/config.php';
 
+$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_DATABASE . ';charset=utf8mb4';
+$user = DB_USER;
+$password = DB_PASSWORD;
 $c = 0;
 $x = 0;
 $y = 0;
@@ -54,10 +59,10 @@ $t = 0;
     <!--後でphpのif文の作成-->
     <title>
         <?php
-        if (isset($title) == "") {
+        if (!isset($page) || $page == "home") {
             echo "浜松学生レゴサークル";
         } else {
-            echo "" . $title[$page] . " - 浜松学生レゴサークル";
+            echo $title[$page] . " - 浜松学生レゴサークル";
         }
         ?>
     </title>
@@ -79,6 +84,9 @@ $t = 0;
         </div>
         <div class="copyright">
             <p><small>copyright <a href="https://ghevp.com">ぐゑ</a> all rights reserved.</small><br></p>
+        </div>
+        <div class="log_in_page">
+            <a class="log_in_button" href="?page=log_in">部員向けログインページ</a>
         </div>
     </footer>
 </body>
