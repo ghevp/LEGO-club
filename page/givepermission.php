@@ -12,7 +12,7 @@ if ($_SESSION["position"] != 1) {
     header("location: welcome.php");
     exit;
 }
-//POSTされてきたデータを格納する変数の定義と初期化
+//POSTされてきたデータを格納する変数の定義と初期化を行う
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
