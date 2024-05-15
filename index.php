@@ -1,9 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <?php
+
 if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-};
+    $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
+} else {
+    $page = "home";
+}
 if (isset($page)) {
 } else {
     $page = "home";
@@ -17,18 +21,11 @@ $title = array(
     'achievement' => "活動実績",
     'works' => "作品紹介",
     'log_in' => "ログイン",
-    'config'=>"設定",
-    'register'=>"新規アカウント作成"
+    'config' => "設定",
+    'register' => "新規アカウント作成"
 );
-require_once 'page/config.php';
-
-$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_DATABASE . ';charset=utf8mb4';
-$user = DB_USER;
-$password = DB_PASSWORD;
-$c = 0;
-$x = 0;
-$y = 0;
-$t = 0;
+// クロスサイトスクリプティング（XSS）を防ぐ
+echo htmlspecialchars($title[$page], ENT_QUOTES, 'UTF-8');
 ?>
 
 <head>
@@ -86,7 +83,7 @@ $t = 0;
             <p><small>copyright <a href="https://ghevp.com">ぐゑ</a> all rights reserved.</small><br></p>
         </div>
         <div class="log_in_page">
-            <a class="log_in_button" href="?page=log_in">部員向けログインページ</a>
+            <a class="log_in_button" href="/page/log_in.php">部員向けログインページ</a>
         </div>
     </footer>
 </body>

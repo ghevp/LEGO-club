@@ -1,42 +1,114 @@
 <?php
-require_once 'config.php';
-// register.php ファイルのユーザー作成処理部分
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    $connection = mysqli_connect($servername, $username, $password, $dbname);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+#require_once 'config.php';
+require_once 'functions.php';
+require_once 'db_connect.php';
+//セッションの開始
+session_start();
 
-    // 接続エラーの確認
-    if (!$connection) {
-        die("データベース接続エラー: " . mysqli_connect_error());
+//POSTされてきたデータを格納する変数の定義と初期化
+$datas = [
+    'name'  => '',
+    'password'  => '',
+    'confirm_password'  => ''
+];
+
+//GET通信だった場合はセッション変数にトークンを追加
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    setToken();
+}
+//POST通信だった場合はDBへの新規登録処理を開始
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //CSRF対策
+    checkToken();
+
+    // POSTされてきたデータを変数に格納
+    foreach ($datas as $key => $value) {
+        if ($value = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS)) {
+            $datas[$key] = $value;
+        }
     }
-    // フォームから送られたユーザー名とパスワードを取得
-    $input_username = $_POST['username'];
-    $input_password = $_POST['password'];
+    $_SESSION['useSystem'] = 'register';
+    // バリデーション
+    $errors = validation($datas);
 
-    // パスワードのハッシュ化
-    $hashed_password = password_hash($input_password, PASSWORD_DEFAULT);
-
-    // ユーザーをDBに登録する処理を記述
-    // データベースに仮のユーザーデータを挿入する
-    $query = "INSERT INTO users (username, password) VALUES ('$input_username', '$hashed_password')";
-    $result = mysqli_query($connection, $query); // データベース操作を行う
-    // 例：INSERT文を使用してユーザーをDBに登録する
-    if (!$result) {
-        $error_message = mysqli_error($connection);
-        error_log("データベースエラー: " . $error_message);
-        echo "申し訳ございません。サーバーでエラーが発生しました。";
+    //データベースの中に同一ユーザー名が存在していないか確認
+    if (empty($errors['name'])) {
+        $sql = "SELECT id FROM users WHERE name = :name";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':name', $datas['name'], PDO::PARAM_STR);
+        $stmt->execute();
+        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $errors['name'] = 'This username is already taken.';
+        }
     }
-    header('Location: ?page=dashboard');
-    exit;
+    //エラーがなかったらDBへの新規登録を実行
+    if (empty($errors['name']) && empty($errors['password']) && empty($errors['confirm_password'])){
+        
+        $params = [
+            'id' => null,
+            'name' => $datas['name'],
+            'password' => password_hash($datas['password'], PASSWORD_DEFAULT),
+            'created_at' => null
+        ];
+
+        $count = 0;
+        $columns = '';
+        $values = '';
+        foreach (array_keys($params) as $key) {
+            if ($count > 0) {
+                $columns .= ',';
+                $values .= ',';
+            }
+            $columns .= $key;
+            $values .= ':' . $key;
+            $count++;
+        }
+
+        $pdo->beginTransaction(); //トランザクション処理
+        try {
+            $sql = 'insert into users (' . $columns . ')values(' . $values . ')';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($params);
+            $pdo->commit();
+            header("location: log_in.php");
+            exit;
+        } catch (PDOException $e) {
+            echo 'ERROR: Could not register.';
+            $pdo->rollBack();
+        }
+    }else{
+        echo 'ERROR: Could not register.';
+        foreach ($errors as $key => $value) {
+            echo $key . ' : ' . $value . '<br>';
+            echo $datas[$key] . '<br>';
+        }
+    }
 }
 ?>
 <main class="main">
     <div class="login-container">
         <h2>ユーザー作成ページ</h2>
-        <form action="?page=register" method="post">
-            <input type="text" name="username" placeholder="ユーザー名" required>
-            <input type="password" name="password" placeholder="パスワード" required>
-            <button type="submit">ユーザー作成</button>
+        <form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="post">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="ユーザー名" class="form-control <?php echo (!empty(h($errors['name']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['name']); ?>">
+                <span class="invalid-feedback"><?php echo h($errors['name']); ?></span>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="パスワード" class="form-control<?php echo (!empty(h($errors['password']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['password']); ?>">
+                <span class="invalid-feedback"><?php echo h($errors['password']); ?></span>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm_password" placeholder="再度入力" class="form-control <?php echo (!empty(h($errors['confirm_password']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['confirm_password']); ?>">
+                <span class="invalid-feedback"><?php echo h($errors['confirm_password']); ?></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="token" value="<?php echo h($_SESSION['token']); ?>">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
         </form>
     </div>
+
 </main>

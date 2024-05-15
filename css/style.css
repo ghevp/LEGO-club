@@ -33,6 +33,10 @@
   .page{
     width: 80%;
   }
+  .achievement {
+    
+    width: 40%;
+  }
 }
 @media (max-width: 1300px) {
   .policy h1 {
@@ -40,6 +44,10 @@
   }
   .page{
     width: 80%;
+  }
+  .achievement {
+    
+    width: 60%;
   }
 }
 
@@ -51,6 +59,10 @@
   .page{
     width: 80%;
   }
+  .achievement {
+    
+    width: 70%;
+  }
 }
 @media (max-width: 800px) {
   .policy h1 {
@@ -60,11 +72,15 @@
   .page{
     width:90%;
   }
+
 }
 @media (max-width: 600px) {
   .policy h1 {
     font-size: 40px;
     padding-bottom: 450px;
+  }
+  .page{
+    width:90%;
   }
 }
 @media (max-width: 500px) {
@@ -72,11 +88,17 @@
     font-size: 36px;
     padding-bottom: 550px;
   }
+  .page{
+    width:90%;
+  }
 }
 @media (max-width: 400px) {
   .policy h1 {
     font-size: 30px;
     padding-bottom: 700px;
+  }
+  .page{
+    width:90%;
   }
 }
 @media (max-width: 300px) {
@@ -84,13 +106,16 @@
     font-size: 25px;
     padding-bottom: 750px;
   }
+  .page{
+    width:90%;
+  }
 }
 .achievement p {
   text-align: center;
 }
 .achievement {
   text-align: center;
-  width: 90%;
+  
 }
 .achievement h1 {
   text-align: center;
