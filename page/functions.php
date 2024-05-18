@@ -1,4 +1,9 @@
 <?php
+//ユーザーのID情報を取得して、そのユーザーのポジション情報を登録
+function positionRegister(){
+    //ユーザーのIDを取得
+    
+}
 //XSS対策
 function h($s)
 {

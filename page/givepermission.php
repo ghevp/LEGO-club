@@ -20,19 +20,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
     $position = filter_input(INPUT_POST, 'position', FILTER_SANITIZE_SPECIAL_CHARS);
+    //ユーザー名が入力されているか確認
+    if (empty($name)) {
+        $_SESSION['message'] = 'Please enter a name';
+        header('location: givepermission.php');
+        exit;
+    }
+    //権限が選択されているか確認
+    if (empty($position)) {
+        $_SESSION['message'] = 'Please select a position';
+        header('location: givepermission.php');
+        exit;
+    }
+    //本人の権限変更を防ぐ
+    if ($_SESSION['name'] == $name) {
+        $_SESSION['message'] = 'You cannot change your own permission';
+        header('location: givepermission.php');
+        exit;
+    }
+    //データベースの中に同一ユーザー名が存在しているか確認
+    
     $sql = "SELECT id FROM users WHERE name = :name";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);
     $stmt->execute();
 
+
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $sql = "UPDATE positions SET position = :position WHERE id = :id";
+        //ユーザーが存在していた場合、権限を更新
+        $sql = "UPDATE positions SET postion = :position WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':position', $position, PDO::PARAM_INT);
         $stmt->bindValue(':id', $row['id'], PDO::PARAM_INT);
         $stmt->execute();
         $_SESSION['message'] = 'Permission given successfully';
-        header('location: welcome.php');
+        header('location: givepermission.php');
         exit;
     } else {
         $_SESSION['message'] = 'User not found';

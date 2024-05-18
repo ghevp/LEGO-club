@@ -31,7 +31,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     
     <p>以下にあなたの持っている権限が表示されます</p>
    
-    <p><?php    // ポジション情報を表示
+    <p><?php    
+    if (!isset($_SESSION["position"])){
+          //登録したユーザーのIDを取得
+          $sql = "SELECT id FROM users WHERE name = :name";
+          $stmt = $pdo->prepare($sql);
+          $stmt->bindValue(':name', $_SESSION['name'], PDO::PARAM_STR);
+          $stmt->execute();
+          //登録したユーザーのポジション情報を登録
+          $sql = "INSERT INTO positions (id, position) VALUES (:id, 0)";
+          $stmt = $pdo->prepare($sql);
+          $stmt->bindValue(':id', $row['id'], PDO::PARAM_INT);
+          $stmt->execute();
+    }
+    // ポジション情報を表示
+    
      switch ($_SESSION["position"]) {
             case '1':
                 echo "管理者権限";

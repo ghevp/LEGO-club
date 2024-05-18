@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //データベースの中に同一ユーザー名が存在していないか確認
     if (empty($errors['name'])) {
         $sql = "SELECT id FROM users WHERE name = :name";
-        
+
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':name', $datas['name'], PDO::PARAM_STR);
         $stmt->execute();
@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     //エラーがなかったらDBへの新規登録を実行
-    if (empty($errors['name']) && empty($errors['password']) && empty($errors['confirm_password'])){
-        
+    if (empty($errors['name']) && empty($errors['password']) && empty($errors['confirm_password'])) {
+
         $params = [
             'id' => null,
             'name' => $datas['name'],
@@ -73,13 +73,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $pdo->prepare($sql);
             $stmt->execute($params);
             $pdo->commit();
+          
+
             header("location: log_in.php");
             exit;
         } catch (PDOException $e) {
             echo 'ERROR: Could not register.';
             $pdo->rollBack();
         }
-    }else{
+    } else {
         echo 'ERROR: Could not register.';
         foreach ($errors as $key => $value) {
             echo $key . ' : ' . $value . '<br>';

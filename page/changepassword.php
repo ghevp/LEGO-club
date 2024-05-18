@@ -29,6 +29,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $_SESSION['useSystem']="changePassword";
     $errors = validation($data,false);
     if(empty($errors['current_password']) && empty($errors['new_password']) && empty($errors['confirm_password'])){
+        //ユーザーのパスワードを取得
         $sql = "SELECT password FROM users WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':id',$_SESSION['id'],PDO::PARAM_INT);
