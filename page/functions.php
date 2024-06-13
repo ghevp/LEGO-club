@@ -1,8 +1,15 @@
 <?php
 //ユーザーのID情報を取得して、そのユーザーのポジション情報を登録
-function positionRegister(){
-    //ユーザーのIDを取得
-    
+function positionRegister()
+{
+    require_once "db_connect.php";
+    //登録したユーザーのポジション情報を登録
+    $sql = "INSERT INTO positions (id, postion) VALUES (:id, 0)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
+    $stmt->execute();
+    //取得したユーザーのポジション情報をセションに保存
+    $_SESSION["position"] = 0;
 }
 //XSS対策
 function h($s)
@@ -29,23 +36,23 @@ function checkToken()
 //POSTされた値のバリデーション
 function validation($datas, $confirm = true)
 {
-  
+
     //エラーメッセージの初期化
 
     switch ($_SESSION['useSystem']) {
         case 'register':
-            $errors= validationRegister($datas, $confirm);
+            $errors = validationRegister($datas, $confirm);
             break;
         case 'changePassword':
-            $errors= validationChangePassword($datas, $confirm);
+            $errors = validationChangePassword($datas, $confirm);
             break;
         default:
-            $errors= validationLogin($datas);
+            $errors = validationLogin($datas);
             break;
     }
-  
 
-   return $errors;
+
+    return $errors;
 }
 function validationRegister($datas, $confirm = true)
 {
@@ -66,10 +73,9 @@ function validationRegister($datas, $confirm = true)
     //パスワードのチェック（正規表現）
     if (empty($datas["password"])) {
         $errors['password']  = "Please enter a password.";
-        
-    } else if(!preg_match('/\A[a-z\d]{8,100}+\z/i',$datas["password"])){
+    } else if (!preg_match('/\A[a-z\d]{8,100}+\z/i', $datas["password"])) {
         $errors['password'] = "Please set a password with at least eight characters.";
-        echo $datas["password"] ,"<br>";
+        echo $datas["password"], "<br>";
     }
     //パスワード入力確認チェック（ユーザー新規登録時のみ使用）
     if ($confirm) {
@@ -94,7 +100,7 @@ function validationChangePassword($datas)
     //現在のパスワードのチェック
     if (empty($datas['current_password'])) {
         $errors['current_password'] = 'Please enter current password.';
-    } 
+    }
 
     //新しいパスワードのチェック
     if (empty($datas['new_password'])) {
@@ -134,8 +140,8 @@ function validationLogin($datas, $confirm = true)
     } else if (!preg_match('/\A[a-z\d]{8,100}\z/i', $datas["password"])) {
         $errors['password'] = "Please set a password with at least 8 characters.";
     }
-      //パスワード入力確認チェック（ユーザー新規登録時のみ使用）
-      if ($confirm) {
+    //パスワード入力確認チェック（ユーザー新規登録時のみ使用）
+    if ($confirm) {
         if (empty($datas["confirm_password"])) {
             $errors['confirm_password']  = "Please confirm password.";
         } else if (empty($errors['password']) && ($datas["password"] != $datas["confirm_password"])) {

@@ -112,7 +112,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
            
         </form>
-      
+        <?php
+        //全部員の名前と権限を表示
+        $sql = "SELECT users.name, positions.postion FROM users JOIN positions ON users.id = positions.id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        echo '<table class="table table-bordered">';
+        echo '<tr><th>部員名</th><th>権限</th></tr>';
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo '<tr>';
+            echo '<td>' . $row['name'] . '</td>';
+            switch ($row['postion']) {
+                case '1':
+                    echo '<td>管理者権限</td>';
+                    break;
+                case '2':
+                    echo '<td>副管理者権限</td>';
+                    break;
+                case '3':
+                    echo '<td>部員権限</td>';
+                    break;
+                default:
+                    echo '<td>ゲスト権限</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+        ?>
 </body>
 
 </html>
