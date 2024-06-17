@@ -1,0 +1,5 @@
+{
+    "require": {
+        "supabase/postgrest-php": "^0.0.4"
+    }
+}

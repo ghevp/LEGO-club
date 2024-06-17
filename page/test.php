@@ -6,17 +6,16 @@
 
 <body>
     <?php
-    require_once 'config.php';
-
+    require_once('testConnect.php');
 
 
     /* ①　データベースの接続情報を定数に格納する */
-    $dsn = 'mysql:dbname=test;host=mysql;charset=utf8mb4';
-    $user = 'docker';
-    $password = 'docker';
+    $dsn = 'pgsql:host=' . DB_HOST . ';dbname=' . DB_DATABASE . ';port=' . DB_PORT . ';sslmode=require';
+    $dbUser = DB_USER;
+    $dbPassword = DB_PASSWORD;
 
     try {
-        $dbh = new PDO($dsn, $user, $password);
+        $dbh = new PDO($dsn, $dbUser, $dbPassword);
 
         print('接続に成功しました。<br>');
 
@@ -39,4 +38,3 @@
 </body>
 
 </html>
-
