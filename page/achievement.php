@@ -133,8 +133,42 @@
 
                     </p>
                 </div>
+                <div class="one_of_achievement">
+                    <h2>くるくるFes</h2>
+                    <p class="date">2024　4/14(日)</p>
+                    <p>中瀬南部緑地</p>
+                    <p>「第24回静大祭in浜松」で展示しました。
+                        玉運びのからくり装置GBCの展示を行いました。
+                        関東からはるばる参加してくれた12歳の女の子も参加してくれました。
+                        10代前半からGBCを始める方が増えるとGBCの未来は明るいと感じますね。
+                        <img src="img/pic10.jpg">
+                    </p>
+                </div>
+                <div class="one_of_achievement">
+                    <h2>新歓部会</h2>
+                    <p class="date">2024年　①4/27(土)　②5/11(土)</p>
+                    <p>中瀬南部緑地</p>
+                    <p>城北会館にて新歓の部会を行いました。
+                        セットの組み換え体験会を行いました。新入部員には使ったセットをプレゼントしました。
+                        結果、7名の1年生に入部していただけました。本当にありがたいです。
+
+                        <img src="img/新歓.jpg">
+                    </p>
+                </div>
+
+                <div class="one_of_achievement">
+                    <h2>JBF2024</h2>
+                    <p class="date">2024年　6月8, 9日</p>
+                    <p>中瀬南部緑地</p>
+                    <p>部員2人で日本最大のレゴファンのハブイベントのJBFに参加しました。
+                        Akiyukiさん主催のGBC卓に参加しました。憧れのAkiyukiさんの作品と繋げたことに大変感動しました。来年度は誰も考えつかないようなクオリティを上げた作品で来場者の皆様に楽しんでいただけるよう精進していきます。
 
 
+                        <img src="img/JBF2024.jpg">
+                    </p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=xj62Gs6MOcg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
+                </div>
             </div>
         </div>
 </main>
