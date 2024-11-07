@@ -19,7 +19,7 @@
 
         print('接続に成功しました。<br>');
 
-        $dbh->query('SET NAMES utf8mb4');
+        
 
         $sql = 'select * from users';
         foreach ($dbh->query($sql) as $row) {

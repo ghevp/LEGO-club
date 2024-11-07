@@ -1,10 +1,10 @@
 <?php
-require_once 'testConnect.php';
+require_once 'config.php';
 
 
 
 /* ①　データベースの接続情報を定数に格納する */
-$dsn = 'pgsql:host=' . DB_HOST . ';dbname=' . DB_DATABASE . ';port=' . DB_PORT . ';sslmode=require';
+$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_DATABASE . ';charset=utf8mb4';
 $dbUser = DB_USER;
 $dbPassword = DB_PASSWORD;
 
@@ -19,4 +19,5 @@ try {
     echo 'ERROR: Could not connect.' . $e->getMessage() . "\n";
     exit();
 }
+
 ?>

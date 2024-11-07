@@ -36,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //データベースの中に同一ユーザー名が存在していないか確認
     if (empty($errors['name'])) {
         $sql = "SELECT id FROM users WHERE name = :name";
-
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':name', $datas['name'], PDO::PARAM_STR);
         $stmt->execute();
@@ -68,6 +67,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $pdo->beginTransaction(); //トランザクション処理
+        //idを自動採番するための処理
+        $sql = 'SELECT nextval(\'users_id_seq\')';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $params['id'] = $row['nextval'];
+        //created_atに現在時刻を入れるための処理
+        $params['created_at'] = date('Y-m-d H:i:s');
+        
+        //データベースへの新規登録処理
         try {
             $sql = 'insert into users (' . $columns . ')values(' . $values . ')';
             $stmt = $pdo->prepare($sql);
@@ -79,10 +88,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } catch (PDOException $e) {
             echo 'ERROR: Could not register.';
+            echo $e->getMessage();
             $pdo->rollBack();
         }
     } else {
         echo 'ERROR: Could not register.';
+        echo '<br>';
+        echo 'Please check the following items.';
         foreach ($errors as $key => $value) {
             echo $key . ' : ' . $value . '<br>';
             echo $datas[$key] . '<br>';
@@ -92,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <main class="main">
     <div class="login-container">
+     
         <h2>ユーザー作成ページ</h2>
         <form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="post">
             <div class="form-group">

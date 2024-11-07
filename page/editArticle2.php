@@ -1,20 +1,40 @@
 <?php
 // データベース接続
-require_once "functions.php";
-require_once "db_connect.php";
-// セッション変数を初期化
+require_once('db_connect.php');
+require_once('functions.php');
 session_start();
 // ユーザーがログインしているか確認 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: log_in.php");
     exit;
 }
+
+
+//権限の確認
 // 副管理者権限以上を持っているか確認
 if ($_SESSION["position"] == 3 || $_SESSION["position"] == 0) {
     header("location: welcome.php");
     exit;
 }
 
+
+// 新規記事か既存記事かを判別し、新規記事の場合はそのまま、既存記事の場合は既存記事の内容を表示
+if (isset($_POST['edit'])) {
+    $article_id = $_POST['edit'];
+    $sql = "SELECT * FROM articles WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':id', $article_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $article = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+// 新規記事の場合は空の連想配列を作成
+if (!isset($article)) {
+    $article = [
+        'id' => '',
+        'title' => '',
+        'content' => ''
+    ];
+}
 
 
 ?>
@@ -41,7 +61,8 @@ if ($_SESSION["position"] == 3 || $_SESSION["position"] == 0) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav
+                ">
                 <li class="nav-item">
                     <a class="nav-link" href="articles.php">記事一覧</a>
                 </li>
@@ -58,48 +79,27 @@ if ($_SESSION["position"] == 3 || $_SESSION["position"] == 0) {
         </div>
     </nav>
     <div class="container">
-        <h1>編集記事選択</h1>
-        <h2>既存記事編集</h2>
-        <form action="editArticle2.php" method="post">
+        <h1>記事編集</h1>
+        <form action="registerArticle.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $article['id']; ?>">
             <div class="form-group">
-
-                <label for="article_id">記事ID</label>
-                <input type="text" name="article_id" class="form-control" id="article_id">
+                <label for="title">タイトル</label>
+                <input type="text" name="title" class="form-control" id="title" value="<?php echo h($article['title']); ?>">
+            </div>
+            <div class="form-group">
+                <label for="content">内容</label>
+                <textarea name="content" class="form-control" id="content"><?php echo h($article['content']); ?></textarea>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="author" value="<?php echo $_SESSION['id']; ?>">
+                
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="token" value="<?php echo h($_SESSION['token']); ?>">
                 <button type="submit" class="btn btn-primary">編集</button>
+            </div>
         </form>
-        <h2>新規記事作成</h2>
-        <form action="editArticle2.php" method="post">
-            <button type="submit" class="btn btn-primary">新規作成</button>
-        </form>
-
-        <h2>記事一覧</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>記事ID</th>
-                    <th>タイトル</th>
-                    <th>作成日時</th>
-                    <th>更新日時</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = 'select * from articles';
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute();
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr>';
-                    echo '<td>' . $row['id'] . '</td>';
-                    echo '<td>' . $row['title'] . '</td>';
-                    echo '<td>' . $row['created_at'] . '</td>';
-                    echo '<td>' . $row['updated_at'] . '</td>';
-                    echo '</tr>';
-                }
-                ?>
-            </tbody>
-        </table>
-
     </div>
-
-
 </body>
+
+</html>
