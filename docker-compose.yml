@@ -1,19 +1,19 @@
-version:　3.8
+version: '3'
 services:
 
   #MySQL用コンテナ
   mysql:
-    container_name: mysql:
+    container_name: mysql
     image: mysql:latest
     volumes:
       - ./mysql:/var/lib/mysq
     ports:
       - 3308:3308
     environment:
-      - MYSQL_ROOT_PASSWORD=GitnyZD3277
-      - MYSQL_DATABASE=at88database
-      - MYSQL_USER=activeturtle88
-      - MYSQL_PASSWORD=GitnyZD3277
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=user
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
 
   #phpMyAdmin用コンテナ
   phpmyadmin:
