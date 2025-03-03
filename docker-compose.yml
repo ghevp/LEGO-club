@@ -10,10 +10,10 @@ services:
     ports:
       - 3308:3308
     environment:
-      - MYSQL_ROOT_PASSWORD=Ddf07dsy
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=LEGOClubDB_1
       - MYSQL_USER=activeturtle88
-      - MYSQL_PASSWORD=Ddf07dsy
+      - MYSQL_PASSWORD=root
 
   #phpMyAdmin用コンテナ
   phpmyadmin:
